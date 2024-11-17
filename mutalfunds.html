@@ -103,7 +103,6 @@
                 </tr>
             </thead>
             <tbody id="results-table">
-                <!-- Rows will be generated dynamically -->
             </tbody>
         </table>
     </div>
@@ -123,7 +122,6 @@
         .then(data => {
         document.getElementById('total-investment').textContent = `Total Investment: ₹${data.total_investment.toFixed(2)}`;
         document.getElementById('total-value').textContent = `Total Value: ₹${data.total_value.toFixed(2)}`;
-        // Optionally, dynamically populate the table as well (logic can be expanded here)
          })
     .catch(error => console.error('Error:', error));
 
@@ -138,7 +136,7 @@
         let totalValue = 0;
 
         const resultsTable = document.getElementById('results-table');
-        resultsTable.innerHTML = ''; // Clear previous results
+        resultsTable.innerHTML = ''; 
 
         for (let i = 1; i <= years; i++) {
             const yearMonths = i * 12;
@@ -151,7 +149,6 @@
             }
             const yearTotal = returns.toFixed(2);
 
-            // Populate table
             const row = `<tr>
                 <td>${i}</td>
                 <td>₹${(monthlyInvestment * 12 * i).toFixed(2)}</td>
@@ -161,7 +158,6 @@
             resultsTable.innerHTML += row;
         }
 
-        // Final calculations
         totalValue = monthlyInvestment * ((Math.pow(1 + monthlyRate, months) - 1) / monthlyRate) * (1 + monthlyRate);
 
         document.getElementById('total-investment').textContent = `Total Investment: ₹${totalInvestment.toFixed(2)}`;
